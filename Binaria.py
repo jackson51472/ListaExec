@@ -1,10 +1,17 @@
 import random
 import time
 
+print("Tempo  para fazer lista")
 tempo_Inicio = time.time()
-vet = [random.randint(0, 15000) for i in range(1500)]
+
+vet = [random.randint(0, 999999999) for i in range(2000)]
 num = random.choice(vet)
+
 vet = sorted(vet)
+
+tempo_Fim = time.time()
+
+print(f"{tempo_Fim - tempo_Inicio:.4f}\n===================================")
 
 def achar_Repeticao(vet, chave):
     esq = 0
@@ -27,27 +34,43 @@ def achar_Recursiva(vet, chave, esq, dir, rodada):
 
     meio =int((esq+dir)/2)
 
+
     if vet[meio] == chave:
-         return f"Chave {chave:.0f} encontrada na posição {meio:.0f}  \nVezes rodada {rodada}"
+
+        return f"Chave {chave:.0f} encontrada na posição {meio:.0f}  \nVezes rodada {rodada}"
 
     elif chave < vet[meio]:
         dir = meio - 1
 
-
-        return achar_Recursiva(vet, chave, dir, esq, rodada)
+        return achar_Recursiva(vet, chave, esq, dir, rodada)
 
     elif chave > vet[meio]:
         esq = meio + 1
 
-        return achar_Recursiva(vet, chave, dir, esq, rodada)
+        return achar_Recursiva(vet, chave, esq, dir, rodada)
+
+
 
 
 print(f"Numero: {num:.0f}")
 
-dir, esq = 0, len(vet)-1
+print("ATIVIDADES 1A: Repetição")
+tempo_Inicio = time.time()
 
+esq, dir = 0, len(vet)-1
 rodadas = 0
-achar_Repeticao(vet,num)
-tempo_Fim = time.time()
 
-print(f"{tempo_Fim - tempo_Inicio:.4f}")
+achar_Repeticao(vet, num)
+
+
+tempo_Fim = time.time()
+print(f"{tempo_Fim - tempo_Inicio:.4f}\n===================================")
+
+print("ATIVIDADES 1C: Recursiva")
+
+tempo_Inicio = time.time()
+
+print(achar_Recursiva(vet, num, esq, dir, rodadas))
+
+tempo_Fim = time.time()
+print(f"{tempo_Fim - tempo_Inicio:.4f}\n===================================")

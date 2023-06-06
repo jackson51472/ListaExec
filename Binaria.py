@@ -1,10 +1,11 @@
 import random
 import time
-
+#4,7,10,13,12-17,20
+#10,100,1000,10000,100000
 print("Tempo  para fazer lista")
 tempo_Inicio = time.time()
 
-vet = [random.randint(0, 999999999) for i in range(2000)]
+vet = [random.randint(0, 999999) for i in range(100000)]
 num = random.choice(vet)
 
 vet = sorted(vet)

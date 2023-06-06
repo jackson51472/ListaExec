@@ -12,11 +12,12 @@ def dicionarioAluno():
     for i in range(provas):
         dicAluno["notas"] = []
         nota = float(input(f"Nota do aluno na prova {i+1}: "))
-        dicAluno["notas"].append(nota)
+
 
         while nota > 10 or nota < 0:
             nota = float(input(f"NOTA INVALIDA!!!\n   Digite novamente a nota na prova {provas}: "))
-            dicAluno["Notas"].append(nota)
+
+        dicAluno["notas"].append(nota)
         media += nota
 
     dicAluno["media"] = media = media / (i + 1)
